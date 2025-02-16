@@ -1,0 +1,262 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "53644edb-7912-45c2-959b-d0f398dbabd3",
+   "metadata": {},
+   "source": [
+    "# STEMMING"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "54813b92-279e-4d08-83c4-2a730e839daa",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# IMORT STEMMING\n",
+    "from nltk.stem import PorterStemmer,RegexpStemmer,LancasterStemmer,SnowballStemmer"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "48a328de-94a5-451a-a4d0-508c26b428f3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "l=LancasterStemmer()\n",
+    "p=PorterStemmer()\n",
+    "r=RegexpStemmer(\"ing\")\n",
+    "s=SnowballStemmer(\"english\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8cdf25a5-d5b1-449d-80fa-ab003d651f8e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'chang'"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "l.stem(\"changed\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "8778ebbc-39f0-455e-b851-e61e513b9b14",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'changed'"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "r.stem(\"changed\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "2ad345e0-6e14-46a4-b5d3-59111235f528",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'chang'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "p.stem(\"changed\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "3e17cc5a-a500-4ed2-a1ea-00eda9d4411d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'chand'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s.stem(\"chande\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a2f9ab5d-37c7-4e19-9401-ca638a1a5690",
+   "metadata": {},
+   "source": [
+    "# lemmatization"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "33d951ce-5886-4a26-90b4-a9b5fb10cd30",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data] Downloading package wordnet to\n",
+      "[nltk_data]     C:\\Users\\DELL\\AppData\\Roaming\\nltk_data...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# import lemmatizer\n",
+    "from nltk.stem import WordNetLemmatizer\n",
+    "import nltk\n",
+    "nltk.download('wordnet')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "1cb66df4-4fdf-424f-8276-2629d1b97556",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "wr=WordNetLemmatizer()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "2450f302-dd73-4593-ac40-f27f404fee1d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'changed'"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "wr.lemmatize(\"changed\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "57372aac-82e3-4e87-8c72-37ac4f338668",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'chanden'"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "wr.lemmatize(\"chanden\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "0f0647d3-0c50-4f2b-9b18-64a4ac6890f4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'mouse'"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "wr.lemmatize(\"mice\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "51953b9e-2c2d-41cb-8719-4a7323c54b0d",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
